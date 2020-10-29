@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2019 Nokia.
+ * Copyright (c) 2018-2020 Nokia.
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -19,14 +19,19 @@
  * platform project (RICP).
  */
 
-#include "CppUTest/CommandLineTestRunner.h"
+#ifndef EXSTRING_UT_HELPERS_H_
+#define EXSTRING_UT_HELPERS_H_
 
 extern "C" {
-#include <stdio.h>
+#include "exstringsStub.h"
+#include "redismodule.h"
 }
 
-int main(int ac, char** av)
-{
-    MemoryLeakWarningPlugin::turnOffNewDeleteOverloads();
-    return CommandLineTestRunner::RunAllTests(ac, av);
-}
+#define UT_DUMMY_BUFFER_SIZE 1
+#define UT_DUMMY_PTR_ADDRESS 1234
+
+RedisModuleString **createRedisStrVec(size_t size);
+
+void returnNKeysFromScanSome(long keys);
+
+#endif

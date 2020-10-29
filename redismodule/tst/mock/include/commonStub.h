@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2019 Nokia.
+ * Copyright (c) 2018-2020 Nokia.
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -19,14 +19,19 @@
  * platform project (RICP).
  */
 
-#include "CppUTest/CommandLineTestRunner.h"
+#ifndef COMMONSTUB_H_
+#define COMMONSTUB_H_
 
-extern "C" {
-#include <stdio.h>
-}
 
-int main(int ac, char** av)
-{
-    MemoryLeakWarningPlugin::turnOffNewDeleteOverloads();
-    return CommandLineTestRunner::RunAllTests(ac, av);
-}
+#include <pthread.h>
+
+#define UT_DUMMY_THREAD_ID 1234
+
+int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
+                   void *(*start_routine) (void *), void *arg);
+
+int pthread_detach(pthread_t thread);
+
+pthread_t pthread_self(void);
+
+#endif
