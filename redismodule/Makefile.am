@@ -116,30 +116,12 @@ test: ut_test
 endif
 
 ut_test: redismodule_ut redismodule_ut2
-	./redismodule_ut -ojunit
-	./redismodule_ut2 -ojunit
+	./redismodule_ut
+	./redismodule_ut2
 
 ut_memcheck_test: redismodule_ut redismodule_ut2
-	valgrind --error-exitcode=1 \
-        --tool=memcheck \
-        --show-emwarns=yes \
-        -v -d \
-        --stats=yes \
-        --read-var-info=yes \
-        --leak-check=full \
-        --log-file=/tmp/redimodule_ut_valgrind_leak.log \
-        --track-origins=yes \
-        ./redismodule_ut
-	valgrind --error-exitcode=1 \
-        --tool=memcheck \
-        --show-emwarns=yes \
-        -v -d \
-        --stats=yes \
-        --read-var-info=yes \
-        --leak-check=full \
-        --log-file=/tmp/redimodule_ut2_valgrind_leak.log \
-        --track-origins=yes \
-        ./redismodule_ut2
+	valgrind --error-exitcode=1 --leak-check=full ./redismodule_ut
+	valgrind --error-exitcode=1 --leak-check=full ./redismodule_ut2
 
 TESTS = run-tests.sh
 
