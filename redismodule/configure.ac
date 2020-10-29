@@ -24,7 +24,7 @@ AC_HEADER_STDBOOL
 
 AC_CONFIG_FILES([Makefile])
 
-#AC_OUTPUT
+AC_OUTPUT
 # Configuration option --with-gcov-report-dir=DIR
 #   If this option is given, gcov unit test coverage analysis is enabled and
 #   results are copied to the directory.
@@ -45,9 +45,3 @@ else
 fi
 AC_SUBST(GCOV_REPORT_DIR)
 AM_CONDITIONAL([ENABLE_GCOV],[test "x$with_gcov_report_dir" != "xno"])
-
-DX_DOT_FEATURE(ON)
-DX_INIT_DOXYGEN([shareddatalayer], [Doxyfile], [doxygen-doc])
-SDL_LT_VERSION=m4_format("%d:%d:%d", SDL_CURRENT, SDL_REVISION, SDL_AGE)
-AC_SUBST(SDL_LT_VERSION)
-AC_OUTPUT
