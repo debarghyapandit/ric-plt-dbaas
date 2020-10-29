@@ -142,15 +142,10 @@ ut_memcheck_test: redismodule_ut redismodule_ut2
 
 TESTS = run-tests.sh
 
-if ENABLE_GCOV
-AM_CXXFLAGS= -O0 --coverage
-AM_LDFLAGS= --coverage
-
 test_gcov: test
 	mkdir -p @GCOV_REPORT_DIR@
 	mv *.gcov @GCOV_REPORT_DIR@
 	ls -la @GCOV_REPORT_DIR@
-endif
 else
 
 test:
