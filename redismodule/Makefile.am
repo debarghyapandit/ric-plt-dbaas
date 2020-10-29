@@ -25,7 +25,6 @@ clean-local:
 	rm -rf ${builddir}/libredismodule.pc
 
 if UNIT_TEST_ENABLED
-# UT
 CPP_U_TEST=$(CPP_U_TEST_LATEST)
 check_PROGRAMS = redismodule_ut redismodule_ut2
 #TESTS = ${check_PROGRAMS}
@@ -160,3 +159,4 @@ test_gcov: test
 	mv *.gcov @GCOV_REPORT_DIR@
 	ls -la @GCOV_REPORT_DIR@
 endif #UNIT_TEST_ENABLED
+endif
