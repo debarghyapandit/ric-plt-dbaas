@@ -142,11 +142,6 @@ ut_memcheck_test: redismodule_ut redismodule_ut2
 
 TESTS = run-tests.sh
 
-else
-
-test:
-	echo 'enable ut with configure flag: --enable-unit-test and valgrind memcheck with: --enable-unit-test-memcheck'
-	exit 1
 if ENABLE_GCOV
 AM_CXXFLAGS= -O0 --coverage
 AM_LDFLAGS= --coverage
@@ -158,5 +153,10 @@ test_gcov: test
 	mkdir -p @GCOV_REPORT_DIR@
 	mv *.gcov @GCOV_REPORT_DIR@
 	ls -la @GCOV_REPORT_DIR@
-endif #UNIT_TEST_ENABLED
 endif
+else
+
+test:
+	echo 'enable ut with configure flag: --enable-unit-test and valgrind memcheck with: --enable-unit-test-memcheck'
+	exit 1
+endif #UNIT_TEST_ENABLED
