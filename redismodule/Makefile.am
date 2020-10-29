@@ -58,8 +58,15 @@ redismodule_ut_CXXFLAGS = \
 redismodule_ut_LDFLAGS = -Wl,-rpath=${libdir} ${UT_COVERAGE_LDFLAGS}
 redismodule_ut_LDADD = -L${libdir} -L${CPP_U_TEST_LATEST}/lib -lCppUTest -lCppUTestExt -lgcov 
 
+TESTS = run-tests.sh
+
 test: redismodule_ut
 	./run-tests.sh
+
+if ENABLE_GCOV
+AM_CXXFLAGS= -O0 --coverage
+AM_LDFLAGS= --coverage
+
 test_gcov: test
 	@for p in src/.libs/*.o src/redis/.libs/*.o; do \
 		gcov -abcfru $$p 1>/dev/null; \
@@ -68,4 +75,4 @@ test_gcov: test
 	mv *.gcov @GCOV_REPORT_DIR@
 	ls -la @GCOV_REPORT_DIR@
 
-TESTS = run-tests.sh
+
