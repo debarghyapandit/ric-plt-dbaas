@@ -69,3 +69,4 @@ test_gcov: test
 	done
 	mkdir -p @GCOV_REPORT_DIR@
 	mv *.gcov @GCOV_REPORT_DIR@
+endif
