@@ -60,5 +60,12 @@ redismodule_ut_LDADD = -L${libdir} -L${CPP_U_TEST_LATEST}/lib -lCppUTest -lCppUT
 
 test: redismodule_ut
 	./run-tests.sh
+test_gcov: test
+	@for p in src/.libs/*.o src/redis/.libs/*.o; do \
+		gcov -abcfru $$p 1>/dev/null; \
+	done
+	mkdir -p @GCOV_REPORT_DIR@
+	mv *.gcov @GCOV_REPORT_DIR@
+	ls -la @GCOV_REPORT_DIR@
 
 TESTS = run-tests.sh
