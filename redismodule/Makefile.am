@@ -58,7 +58,6 @@ redismodule_ut_CXXFLAGS = \
 redismodule_ut_LDFLAGS = -Wl,-rpath=${libdir} ${UT_COVERAGE_LDFLAGS}
 redismodule_ut_LDADD = -L${libdir} -L${CPP_U_TEST_LATEST}/lib -lCppUTest -lCppUTestExt -lgcov 
 
-TESTS = run-tests.sh
 
 test: redismodule_ut
 	./run-tests.sh
@@ -69,4 +68,5 @@ test_gcov: test
 	done
 	mkdir -p @GCOV_REPORT_DIR@
 	mv *.gcov @GCOV_REPORT_DIR@
-endif
+
+TESTS = run-tests.sh
