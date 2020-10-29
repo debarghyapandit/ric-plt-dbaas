@@ -74,5 +74,5 @@ test_gcov: test
 	mkdir -p @GCOV_REPORT_DIR@
 	mv *.gcov @GCOV_REPORT_DIR@
 	ls -la @GCOV_REPORT_DIR@
-
+endif
 
