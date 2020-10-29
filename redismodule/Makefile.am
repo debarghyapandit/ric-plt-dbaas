@@ -25,6 +25,7 @@ clean-local:
 	rm -rf ${builddir}/libredismodule.pc
 
 if UNIT_TEST_ENABLED
+# UT
 CPP_U_TEST=$(CPP_U_TEST_LATEST)
 check_PROGRAMS = redismodule_ut redismodule_ut2
 #TESTS = ${check_PROGRAMS}
@@ -142,13 +143,10 @@ ut_memcheck_test: redismodule_ut redismodule_ut2
 
 TESTS = run-tests.sh
 
-test_gcov: test
-	mkdir -p @GCOV_REPORT_DIR@
-	mv *.gcov @GCOV_REPORT_DIR@
-	ls -la @GCOV_REPORT_DIR@
 else
 
 test:
 	echo 'enable ut with configure flag: --enable-unit-test and valgrind memcheck with: --enable-unit-test-memcheck'
 	exit 1
+
 endif #UNIT_TEST_ENABLED
