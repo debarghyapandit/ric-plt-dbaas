@@ -19,8 +19,7 @@
 Release-Notes
 =============
 
-This document provides the release notes for O-RAN SC Amber release of
-ric-plt/dbaas.
+This document provides the release notes of the dbaas.
 
 .. contents::
    :depth: 3
@@ -30,6 +29,29 @@ ric-plt/dbaas.
 
 Version history
 ---------------
+
+[0.4.1] - 2020-06-17
+
+* Upgrade base image to bldr-alpine3:12-a3.11 in Redis docker build
+
+[0.4.0] - 2020-04-23
+
+* Bump version to 0.4.0 to follow RIC versioning rules (4 is meaning RIC release R4). No functional changes.
+
+[0.3.2] - 2020-04-22
+
+* Upgrade base image to bldr-alpine3:10-a3.22-rmr3 in Redis docker build
+* Fix redismodule resource leak
+
+[0.3.1] - 2020-02-13
+
+* Upgrade base image to alpine3-go:1-rmr1.13.1 in Redis docker build
+
+[0.3.0] - 2020-01-23
+
+* Enable unit tests and valgrind in CI.
+* Update redismodule with new commands.
+* Update documentation.
 
 [0.2.2] - 2019-11-12
 

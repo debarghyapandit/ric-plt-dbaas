@@ -3,6 +3,31 @@
 This subdirectory provides implementation for the commands which are implemented
 as a [Redis modules](https://redis.io/topics/modules-intro).
 
+# Compiling and Unit Tests
+
+To compile, run unit tests and install use the commands:
+```
+./autogen.sh
+./configure
+make
+make test
+make install
+```
+
+By default unit tests and valgrind memory checking are enabled.
+This requires `cpputest` and `valgrind` as additional dependencies.
+Unit test memory checking can be disabled with the `configure` option
+`--disable-unit-test-memcheck` and the unit tests can be completely disabled
+with the `configure` option `--disable-unit-test`.
+For example to compile and install with unit tests completely disabled
+one would run the commands:
+```
+./autogen.sh
+./configure --disable-unit-test
+make
+make install
+```
+
 # Commands
 
 ## SETIE key value oldvalue [expiration EX seconds|PX milliseconds]
